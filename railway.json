@@ -2,7 +2,7 @@
   "$schema": "https://railway.com/railway.schema.json",
   "build": {
     "builder": "RAILPACK",
-    "buildCommand": "bun install --frozen-lockfile && bun run build"
+    "buildCommand": "bun install --frozen-lockfile && NODE_ENV=production bun run build"
   },
   "deploy": {
     "preDeployCommand": "bun run db:migrate",
