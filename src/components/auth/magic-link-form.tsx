@@ -17,7 +17,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { magicLink } from "@/lib/auth-client";
+import { signIn } from "@/lib/auth-client";
 
 const formSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -39,7 +39,7 @@ export function MagicLinkForm() {
   async function onSubmit(data: FormData) {
     setIsLoading(true);
     try {
-      const result = await magicLink.sendMagicLink({
+      const result = await signIn.magicLink({
         email: data.email,
         callbackURL: "/dashboard",
       });

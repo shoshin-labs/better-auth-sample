@@ -6,7 +6,7 @@ import { Loader2, Fingerprint } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
-import { passkey } from "@/lib/auth-client";
+import { signIn } from "@/lib/auth-client";
 
 export function PasskeyButton() {
   const router = useRouter();
@@ -15,7 +15,7 @@ export function PasskeyButton() {
   async function handlePasskeySignIn() {
     setIsLoading(true);
     try {
-      const result = await passkey.signIn();
+      const result = await signIn.passkey();
 
       if (result?.error) {
         toast.error(result.error.message || "Passkey sign in failed");

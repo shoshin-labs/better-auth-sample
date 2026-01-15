@@ -22,7 +22,11 @@ export const authClient = createAuthClient({
     passkeyClient(),
     magicLinkClient(),
     anonymousClient(),
-    organizationClient(),
+    organizationClient({
+      teams: {
+        enabled: true,
+      },
+    }),
     adminClient(),
     multiSessionClient(),
   ],
@@ -41,8 +45,6 @@ export const {
   passkey,
   // Magic Link
   magicLink,
-  // Anonymous
-  anonymous,
   // Organization
   organization,
   useActiveOrganization,

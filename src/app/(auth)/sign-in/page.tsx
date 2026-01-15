@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Link from "next/link";
 import {
   Card,
@@ -14,7 +15,7 @@ import { PasskeyButton } from "@/components/auth/passkey-button";
 import { getEnabledProviders } from "@/lib/get-enabled-providers";
 import { AuthLink } from "@/components/auth/auth-link";
 
-export default function SignInPage() {
+function SignInContent() {
   const enabledProviders = getEnabledProviders();
   const hasSocialProviders = enabledProviders.length > 0;
 
@@ -68,5 +69,13 @@ export default function SignInPage() {
         </p>
       </CardFooter>
     </Card>
+  );
+}
+
+export default function SignInPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SignInContent />
+    </Suspense>
   );
 }

@@ -117,7 +117,7 @@ export default function TeamsPage() {
 
   async function handleDeleteTeam(teamId: string) {
     try {
-      const result = await organization.deleteTeam({
+      const result = await organization.removeTeam({
         teamId,
         organizationId: orgId,
       });
