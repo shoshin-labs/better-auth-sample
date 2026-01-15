@@ -9,7 +9,10 @@
     "lint": "eslint",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "db:studio": "drizzle-kit studio"
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "db:migrate:prod": "node -e \"require('dotenv').config()\" && drizzle-kit migrate",
+    "start:migrate": "npm run db:migrate && npm run start"
   },
   "dependencies": {
     "@better-auth/passkey": "^1.4.13",
