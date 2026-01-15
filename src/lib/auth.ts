@@ -30,9 +30,10 @@ export const auth = betterAuth({
   secret: process.env.BETTER_AUTH_SECRET,
   trustedOrigins: [process.env.BETTER_AUTH_URL || "http://localhost:3000"],
 
-  // Production cookie settings
+  // Production cookie settings - Railway terminates HTTPS at edge
+  // so we force secure cookies based on baseURL, not internal protocol
   advanced: {
-    useSecureCookies: process.env.NODE_ENV === "production",
+    useSecureCookies: process.env.BETTER_AUTH_URL?.startsWith("https://") ?? false,
   },
 
   // Enhanced logging
